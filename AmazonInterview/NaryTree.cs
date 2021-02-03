@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AmazonInterview {
     public class NaryNode<T> {
@@ -6,7 +7,7 @@ namespace AmazonInterview {
 
         public NaryNode<T> Parent { get; private set; }
 
-        public ICollection<NaryNode<T>> Children { get; private set; }
+        public List<NaryNode<T>> Leafs { get; private set; }
 
         public NaryNode(T value) =>
             Value = value;
@@ -15,17 +16,17 @@ namespace AmazonInterview {
             Parent = parent;
 
         public NaryNode<T> Add(T value) {
-            if (Children is null)
-                Children = new List<NaryNode<T>>();
+            if (Leafs is null)
+                Leafs = new List<NaryNode<T>>();
 
             var node = new NaryNode<T>(value, this);
 
-            Children.Add(node);
+            Leafs.Add(node);
 
             return node;
         }
 
-        public NaryNode<T>[] PathToRoot() {
+        public NaryNode<T>[] ToRoot() {
             var path = new List<NaryNode<T>>();
             var current = this;
 
@@ -38,6 +39,30 @@ namespace AmazonInterview {
             return path.ToArray();
         }
 
-        public NaryNode<T> 
+        public List<List<NaryNode<T>>> InOrder() {
+            var result = new List<List<NaryNode<T>>>();
+
+            GetNodesInOrder(new List<NaryNode<T>>(), result);
+
+            return result;
+        }
+
+        private void GetNodesInOrder(List<NaryNode<T>> parentPath, List<List<NaryNode<T>>> result) {
+            if (!HasLeafs()) {
+                result.Add(parentPath.ToList());
+                result.Last().Add(this);
+            } else {
+                foreach (var leaf in Leafs) {
+                    var index = parentPath.Count;
+
+                    parentPath.Add(this);
+                    leaf.GetNodesInOrder(parentPath, result);
+                    parentPath.RemoveRange(index, parentPath.Count - index);
+                }
+            }
+        }
+
+        private bool HasLeafs() =>
+            Leafs?.Any() == true;
     }
 }

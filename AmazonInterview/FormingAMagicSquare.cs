@@ -44,19 +44,7 @@ namespace AmazonInterview {
         }
 
         private static int[][] Permutations() {
-            var output = new List<int[]>();
-            var indexValuesVector = new int[9, 9];
 
-            for (var row = 0; row < 9; row++) {
-                var array = new int[9];
-
-                for (var column = 0; column < 9; column++) {
-                    array[column] = 0;
-                    indexValuesVector[row, column] = array[column];
-                }
-
-                output.Add(array);
-            }
 
             // 1 _ _ _ _ _ _ _ _
             // 2
@@ -69,10 +57,13 @@ namespace AmazonInterview {
             // 9
 
             return null;
-
-            int GetNumber(int[] excluded) =>
-                Numbers.FirstOrDefault(n => !excluded.Contains(n));
         }
+
+        public static int GetNumber(int[] excluded) =>
+                Numbers.FirstOrDefault(n => !excluded.Contains(n));
+
+        public static int GetNumber(int excluded) =>
+            Numbers.FirstOrDefault(n => n != excluded);
 
         private static bool IsSeriesMagic(int[] flat, int step) {
             var sum = 0;

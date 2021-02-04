@@ -39,7 +39,7 @@ namespace AmazonInterview {
             return path.ToArray();
         }
 
-        public List<List<NaryNode<T>>> InOrder2() {
+        public List<List<NaryNode<T>>> InOrder() {
             var result = new List<List<NaryNode<T>>>();
 
             GetNodesInOrder(new List<NaryNode<T>>(), result);

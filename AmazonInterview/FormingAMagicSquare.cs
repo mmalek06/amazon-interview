@@ -51,10 +51,10 @@ namespace AmazonInterview {
                 var lastNode = root;
 
                 for (var index = 1; index < 9; index++) {
-                    var permutation = root.InOrder1().Last().Select(n => n.Value).ToArray();
+                    var permutation = root.InOrder().Last().Select(n => n.Value).ToArray();
 
                     for (var @try = 0; @try < 9 - permutation.Length; @try++) {
-                        permutation = root.InOrder1().Last().Select(n => n.Value).ToArray();
+                        permutation = root.InOrder().Last().Select(n => n.Value).ToArray();
 
                         lastNode = lastNode.Add(GetNumber(permutation));
                     }
@@ -63,7 +63,7 @@ namespace AmazonInterview {
                 roots.Add(root);
             }
 
-            var result = roots.Select(r => r.InOrder1()).ToList();
+            var result = roots.Select(r => r.InOrder()).ToList();
 
             // 1 _ _ _ _ _ _ _ _
             // 2

@@ -44,7 +44,26 @@ namespace AmazonInterview {
         }
 
         private static int[][] Permutations() {
+            var roots = new List<NaryNode<int>>();
 
+            for (var startNumber = 1; startNumber < 10; startNumber++) {
+                var root = new NaryNode<int>(startNumber);
+                var lastNode = root;
+
+                for (var index = 1; index < 9; index++) {
+                    var permutation = root.InOrder1().Last().Select(n => n.Value).ToArray();
+
+                    for (var @try = 0; @try < 9 - permutation.Length; @try++) {
+                        permutation = root.InOrder1().Last().Select(n => n.Value).ToArray();
+
+                        lastNode = lastNode.Add(GetNumber(permutation));
+                    }
+                }
+
+                roots.Add(root);
+            }
+
+            var result = roots.Select(r => r.InOrder1()).ToList();
 
             // 1 _ _ _ _ _ _ _ _
             // 2

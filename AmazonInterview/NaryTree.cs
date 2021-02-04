@@ -39,7 +39,7 @@ namespace AmazonInterview {
             return path.ToArray();
         }
 
-        public List<List<NaryNode<T>>> InOrder() {
+        public List<List<NaryNode<T>>> InOrder2() {
             var result = new List<List<NaryNode<T>>>();
 
             GetNodesInOrder(new List<NaryNode<T>>(), result);
@@ -47,6 +47,10 @@ namespace AmazonInterview {
             return result;
         }
 
+        /// <summary>
+        /// This overload is more performant, because it does less alocations for new Lists instead relying on
+        /// modifying existing ones.
+        /// </summary>
         private void GetNodesInOrder(List<NaryNode<T>> parentPath, List<List<NaryNode<T>>> result) {
             if (!HasLeafs()) {
                 result.Add(parentPath.ToList());
@@ -60,6 +64,27 @@ namespace AmazonInterview {
                     parentPath.RemoveRange(index, parentPath.Count - index);
                 }
             }
+        }
+
+        /// <summary>
+        /// This overload on the other hand is simpler.
+        /// </summary>
+        private List<List<NaryNode<T>>> GetNodesInOrder() {
+            if (!HasLeafs())
+                return new List<List<NaryNode<T>>> { new List<NaryNode<T>> { this } };
+
+            var paths = new List<List<NaryNode<T>>>();
+
+            foreach (var leaf in Leafs) {
+                foreach (var path in leaf.GetNodesInOrder()) {
+                    var newPath = new List<NaryNode<T>> { this };
+
+                    newPath.AddRange(path);
+                    paths.Add(newPath);
+                }
+            }
+
+            return paths;
         }
 
         private bool HasLeafs() =>

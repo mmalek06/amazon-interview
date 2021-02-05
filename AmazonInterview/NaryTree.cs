@@ -75,7 +75,7 @@ namespace AmazonInterview {
         }
 
         /// <summary>
-        /// This overload is more performant, because it does less alocations for new Lists instead relying on
+        /// This overload is more performant, because it does less alocations for new Lists instead of relying on
         /// modifying existing ones.
         /// </summary>
         private void GetNodesInOrder(List<NaryNode<T>> parentPath, List<List<NaryNode<T>>> result) {

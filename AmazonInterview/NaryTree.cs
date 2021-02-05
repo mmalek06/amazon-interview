@@ -26,23 +26,50 @@ namespace AmazonInterview {
             return node;
         }
 
-        public NaryNode<T>[] ToRoot() {
-            var path = new List<NaryNode<T>>();
+        public IReadOnlyList<NaryNode<T>> ToRoot() {
+            var path = new Stack<NaryNode<T>>();
             var current = this;
 
-            while (current.Parent != null) {
-                path.Add(current);
+            path.Push(this);
 
+            while (current.Parent != null) {
                 current = current.Parent;
+
+                if (current != null)
+                    path.Push(current);
             }
 
-            return path.ToArray();
+            return path.ToList();
         }
 
-        public List<List<NaryNode<T>>> InOrder() {
+        public List<T> ToRootValuesOnly() {
+            var path = new List<T>();
+            var current = this;
+
+            path.Add(Value);
+
+            while (current.Parent != null) {
+                current = current.Parent;
+
+                if (current != null)
+                    path.Add(Value);
+            }
+
+            return path;
+        }
+
+        public IReadOnlyList<IReadOnlyList<NaryNode<T>>> InOrder() {
             var result = new List<List<NaryNode<T>>>();
 
             GetNodesInOrder(new List<NaryNode<T>>(), result);
+
+            return result;
+        }
+
+        public IReadOnlyList<IReadOnlyList<T>> InOrderValuesOnly() {
+            var result = new List<List<T>>();
+
+            GetNodesInOrderValuesOnly(new List<T>(), result);
 
             return result;
         }
@@ -61,6 +88,21 @@ namespace AmazonInterview {
 
                     parentPath.Add(this);
                     leaf.GetNodesInOrder(parentPath, result);
+                    parentPath.RemoveRange(index, parentPath.Count - index);
+                }
+            }
+        }
+
+        private void GetNodesInOrderValuesOnly(List<T> parentPath, List<List<T>> result) {
+            if (!HasLeafs()) {
+                result.Add(parentPath.ToList());
+                result.Last().Add(Value);
+            } else {
+                foreach (var leaf in Leafs) {
+                    var index = parentPath.Count;
+
+                    parentPath.Add(Value);
+                    leaf.GetNodesInOrderValuesOnly(parentPath, result);
                     parentPath.RemoveRange(index, parentPath.Count - index);
                 }
             }

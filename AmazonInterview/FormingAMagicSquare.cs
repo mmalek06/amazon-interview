@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace AmazonInterview {
     // https://www.hackerrank.com/challenges/magic-square-forming/problem
@@ -24,7 +22,9 @@ namespace AmazonInterview {
                 return 0;
 
             var flat = FlattenArray(s);
-            var permutations = Permutations();
+            var permutations = new List<IEnumerable<int>>();
+            
+            Permutations.HeapPermutations(Numbers, Numbers.Length, Numbers.Length, permutations);
 
             return 0;
         }
@@ -42,47 +42,6 @@ namespace AmazonInterview {
 
             return flat;
         }
-
-        private static int[][] Permutations() {
-            var roots = new List<NaryNode<int>>();
-
-            for (var startNumber = 1; startNumber < 10; startNumber++) {
-                var root = new NaryNode<int>(startNumber);
-                var lastNode = root;
-
-                for (var index = 1; index < 9; index++) {
-                    var permutation = root.InOrder().Last().Select(n => n.Value).ToArray();
-
-                    for (var @try = 0; @try < 9 - permutation.Length; @try++) {
-                        permutation = root.InOrder().Last().Select(n => n.Value).ToArray();
-
-                        lastNode = lastNode.Add(GetNumber(permutation));
-                    }
-                }
-
-                roots.Add(root);
-            }
-
-            var result = roots.Select(r => r.InOrder()).ToList();
-
-            // 1 _ _ _ _ _ _ _ _
-            // 2
-            // 3
-            // 4
-            // 5
-            // 6
-            // 7
-            // 8
-            // 9
-
-            return null;
-        }
-
-        public static int GetNumber(int[] excluded) =>
-                Numbers.FirstOrDefault(n => !excluded.Contains(n));
-
-        public static int GetNumber(int excluded) =>
-            Numbers.FirstOrDefault(n => n != excluded);
 
         private static bool IsSeriesMagic(int[] flat, int step) {
             var sum = 0;

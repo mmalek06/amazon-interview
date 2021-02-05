@@ -4,6 +4,13 @@ using System.Linq;
 
 namespace AmazonInterview {
     // https://www.hackerrank.com/challenges/magic-square-forming/problem
+    // var alg = new FormingAMagicSquare();
+
+    // alg.FormingMagicSquare(new int[3][] {
+    //            new int[]{ 5, 3, 4 },
+    //            new int[] { 1, 5, 8 },
+    //            new int[] { 6, 4, 2 }
+    //        });
     public class FormingAMagicSquare {
         private const int GoalSum = 15;
         private static readonly int[] Numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -74,12 +81,11 @@ namespace AmazonInterview {
             foreach (var magicSquare in validSquares) {
                 var currentCost = 0;
 
-                for (var i = 0; i < magicSquare.Length; i++) {
+                for (var i = 0; i < magicSquare.Length; i++)
                     currentCost += Math.Abs(input[i] - magicSquare[i]);
 
-                    if (currentCost < minCost)
-                        minCost = currentCost;
-                }
+                if (currentCost < minCost)
+                    minCost = currentCost;
             }
 
             return minCost;

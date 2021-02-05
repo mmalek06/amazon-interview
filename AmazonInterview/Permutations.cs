@@ -35,23 +35,23 @@ namespace AmazonInterview {
                 numbers.FirstOrDefault(n => !excluded.Contains(n));
         }
 
-        public static void HeapPermutations(int[] a, int size, int n, List<IEnumerable<int>> result) {
-            if (size == 1)
+        public static void HeapPermutations<T>(T[] a, int n, List<IEnumerable<T>> result) {
+            if (n == 1)
                 result.Add(a.ToList());
 
-            for (var i = 0; i < size; i++) {
-                HeapPermutations(a, size - 1, n, result);
+            for (var i = 0; i < n; i++) {
+                HeapPermutations(a, n - 1, result);
 
-                if (size % 2 == 1) {
+                if (n % 2 == 1) {
                     var temp = a[0];
 
-                    a[0] = a[size - 1];
-                    a[size - 1] = temp;
+                    a[0] = a[n - 1];
+                    a[n - 1] = temp;
                 } else {
                     var temp = a[i];
 
-                    a[i] = a[size - 1];
-                    a[size - 1] = temp;
+                    a[i] = a[n - 1];
+                    a[n - 1] = temp;
                 }
             }
         }

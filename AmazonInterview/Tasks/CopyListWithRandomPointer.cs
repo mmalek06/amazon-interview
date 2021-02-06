@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview {
+namespace AmazonInterview.Tasks {
     public class Node {
         public int val;
         public Node next;
@@ -14,7 +14,7 @@ namespace AmazonInterview {
     }
 
     public class CopyListWithRandomPointer {
-        public Node CopyRandomList(Node head) {
+        public Node Execute(Node head) {
             if (head is null)
                 return head;
 

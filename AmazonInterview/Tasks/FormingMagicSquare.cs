@@ -1,8 +1,9 @@
-﻿using System;
+﻿using AmazonInterview.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview {
+namespace AmazonInterview.Tasks {
     // https://www.hackerrank.com/challenges/magic-square-forming/problem
     // var alg = new FormingAMagicSquare();
 
@@ -11,11 +12,11 @@ namespace AmazonInterview {
     //            new int[] { 1, 5, 8 },
     //            new int[] { 6, 4, 2 }
     //        });
-    public class FormingAMagicSquare {
+    public class FormingMagicSquare {
         private const int GoalSum = 15;
         private static readonly int[] Numbers = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-        public int FormingMagicSquare(int[][] s) {
+        public int Execute(int[][] s) {
             if (s.Length < 2)
                 return 0;
 

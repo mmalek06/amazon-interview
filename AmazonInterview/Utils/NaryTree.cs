@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview {
+namespace AmazonInterview.Utils {
     public class NaryNode<T> {
         public T Value { get; private set; }
 

@@ -1,6 +1,6 @@
-﻿namespace AmazonInterview {
+﻿namespace AmazonInterview.Tasks {
     public class BreakAPalindrome {
-        public string BreakPalindrome(string palindrome) {
+        public string Execute(string palindrome) {
             if (string.IsNullOrEmpty(palindrome) || palindrome.Length == 1)
                 return string.Empty;
 

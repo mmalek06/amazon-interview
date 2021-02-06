@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview {
+namespace AmazonInterview.Tasks {
     // https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
     // var result1 = ClimbingTheLeaderboard.ClimbingLeaderboard(
     // new List<int> { 100, 90, 90, 80, 75, 60 },
@@ -9,7 +9,7 @@ namespace AmazonInterview {
     //     new List<int> { 100, 100, 50, 40, 40, 20, 10 },
     //     new List<int> { 5, 25, 50, 120 }); // 6 4 2 1
     public static class ClimbingTheLeaderboard {
-        public static List<int> ClimbingLeaderboard(List<int> ranked, List<int> player) {
+        public static List<int> Execute(List<int> ranked, List<int> player) {
             var scoresMap = GetScoresMap(ranked);
             var result = new List<int>(ranked.Count);
             var indexLow = 0;

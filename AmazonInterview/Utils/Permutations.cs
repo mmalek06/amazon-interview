@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview {
+namespace AmazonInterview.Utils {
     public static class Permutations {
         public static IReadOnlyList<IReadOnlyList<int>> SlowPermutations(int[] numbers) {
             var roots = new List<NaryNode<int>>();

@@ -1,4 +1,4 @@
-﻿namespace AmazonInterview {
+﻿namespace AmazonInterview.Utils {
     public class MatrixTranspose {
         public int[][] T(int [][] s) {
             var sT = new int[s.Length][];

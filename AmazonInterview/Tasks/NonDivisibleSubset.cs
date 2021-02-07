@@ -5,6 +5,8 @@ using System.Linq;
 namespace AmazonInterview.Tasks {
     public static class NonDivisibleSubset {
         // similar in spirit to: https://cs.stackexchange.com/a/57876
+        // NonDivisibleSubset.ExecuteFast(3, new List<int> { 1, 7, 2, 4 });
+        // NonDivisibleSubset.ExecuteFast(7, new List<int> { 278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436 });
         public static int ExecuteFast(int k, List<int> a) {
             var mk = new int[k];
             

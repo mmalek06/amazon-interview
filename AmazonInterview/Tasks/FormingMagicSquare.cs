@@ -20,29 +20,15 @@ namespace AmazonInterview.Tasks {
             if (s.Length < 2)
                 return 0;
 
-            var flatInput = FlattenArray(s);
+            var flatInput = Arrays.FlattenArray(s);
             var permutations = new List<IEnumerable<int>>();
             
-            Permutations.HeapPermutations(Numbers, Numbers.Length, permutations);
+            Arrays.HeapPermutations(Numbers, Numbers.Length, permutations);
 
             var validSquares = GetValidSquares(permutations);
             var minCost = MinimazeTransformationCost(flatInput, validSquares);
 
             return minCost;
-        }
-
-        private static int[] FlattenArray(int[][] s) {
-            var flat = new int[s.Length * s[0].Length];
-            var idx = 0;
-
-            for (var i = 0; i < s.Length; i++) {
-                for (var j = 0; j < s[i].Length; j++) {
-                    flat[idx] = s[i][j];
-                    idx++;
-                }
-            }
-
-            return flat;
         }
 
         private static int[][] GetValidSquares(IEnumerable<IEnumerable<int>> permutations) {

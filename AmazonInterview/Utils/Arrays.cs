@@ -2,7 +2,21 @@
 using System.Linq;
 
 namespace AmazonInterview.Utils {
-    public static class Permutations {
+    public static class Arrays {
+        public static int[] FlattenArray(int[][] s) {
+            var flat = new int[s.Length * s[0].Length];
+            var idx = 0;
+
+            for (var i = 0; i < s.Length; i++) {
+                for (var j = 0; j < s[i].Length; j++) {
+                    flat[idx] = s[i][j];
+                    idx++;
+                }
+            }
+
+            return flat;
+        }
+
         public static IReadOnlyList<IReadOnlyList<int>> SlowPermutations(int[] numbers) {
             var roots = new List<NaryNode<int>>();
 

@@ -1,27 +1,35 @@
-﻿using System;
+﻿using AmazonInterview.Utils;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AmazonInterview.Tasks {
     public static class ActivityNotifications {
         public static int Execute2(int[] expenditures, int d) {
             var notificationsCount = 0;
-            var slice = new int[d];
+            var slice = new List<int>(d);
             
             for (var i = d; i < expenditures.Length; i++) {
                 int sliceIndexToRemove;
-                
+
                 if (i == d) {
                     var indexes = Enumerable.Range(0, d).ToArray();
+                    var tmpSlice = new int[d];
 
-                    Array.Copy(expenditures, i - d, slice, 0, d);
-                    Array.Sort(slice, indexes);
+                    Array.Copy(expenditures, i - d, tmpSlice, 0, d);
+                    Array.Sort(tmpSlice, indexes);
+                    slice.AddRange(tmpSlice);
 
                     sliceIndexToRemove = indexes[0];
                 } else {
-                    var pair = BalanceSlice(slice, expenditures[i - 1], expenditures[i - d]);
+                    var insertionIndex = FindFirstHigherValue(slice, expenditures[i - 1]);
 
-                    slice = pair.Item1;
-                    sliceIndexToRemove = pair.Item2;
+                    if (insertionIndex < 0)
+                        slice.Add(expenditures[i - 1]);
+                    else
+                        slice.Insert(insertionIndex, expenditures[i - 1]);
+                    
+                    sliceIndexToRemove = slice.BinarySearch(expenditures[i - d]);
                 }
 
                 var value = expenditures[i];
@@ -30,48 +38,42 @@ namespace AmazonInterview.Tasks {
                 if (value >= 2 * median)
                     notificationsCount++;
 
-                slice[sliceIndexToRemove] = int.MinValue;
+                slice.RemoveAt(sliceIndexToRemove);
             }
 
             return notificationsCount;
         }
 
-        private static Tuple<int[], int> BalanceSlice(int[] slice, int first, int valueToRemove) {
-            var result = new int[slice.Length];
-            var indexToRemove = -1;
-            int resultIndex, sliceIndex;
-
-            for (resultIndex = 0, sliceIndex = 0; resultIndex < result.Length; resultIndex++, sliceIndex++) {
-                if (sliceIndex < slice.Length && slice[sliceIndex] == int.MinValue)
-                    sliceIndex++;
-                if (sliceIndex >= slice.Length) {
-                    if (first != int.MinValue)
-                        result[resultIndex] = first;
-                } else {
-                    if (first != int.MinValue && slice[sliceIndex] >= first) {
-                        result[resultIndex] = first;
-                        first = int.MinValue;
-                        sliceIndex--;
-                    } else
-                        result[resultIndex] = slice[sliceIndex];
-                }
-
-                if (indexToRemove == -1 && result[resultIndex] == valueToRemove)
-                    indexToRemove = resultIndex;
-            }
-
-            return Tuple.Create(result, indexToRemove);
-        }
-
-        private static double CalculateMedian(int[] values) {
-            if (values.Length % 2 == 0) {
-                var middleLeft = values[(int)Math.Floor((values.Length - 1) / 2f)];
-                var middleRight = values[values.Length / 2];
+        private static double CalculateMedian(List<int> values) {
+            if (values.Count % 2 == 0) {
+                var middleLeft = values[(int)Math.Floor((values.Count - 1) / 2f)];
+                var middleRight = values[values.Count / 2];
 
                 return (middleLeft + middleRight) / 2f;
             }
 
-            return values[values.Length / 2];
+            return values[values.Count / 2];
+        }
+
+        private static int FindFirstHigherValue(List<int> list, int target) {
+            if (list == null || list.Count == 0)
+                return -1;
+
+            var left = 0;
+            var right = list.Count - 1;
+
+            while (left <= right) {
+                var middle = left + (right - left) / 2;
+
+                if (list[middle] > target)
+                    right = middle - 1;
+                else if (list[middle] < target)
+                    left = middle + 1;
+                else
+                    return middle;
+            }
+
+            return -1;
         }
     }
 }

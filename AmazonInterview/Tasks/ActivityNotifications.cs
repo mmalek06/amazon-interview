@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace AmazonInterview.Tasks {
+    //https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem
+    //ActivityNotifications.Execute2(new[] { 2, 3, 4, 2, 3, 6, 8, 4, 5 }, 5); // 2 
+    //ActivityNotifications.Execute2(new[] { 1, 2, 3, 4, 4 }, 4); // 0
+    //ActivityNotifications.Execute2(new[] { 10, 20, 30, 40, 50 }, 3); // 1
+    //ActivityNotifications.Execute2(Resource.expenditures.Split(' ').Select(v => Convert.ToInt32(v.Trim())).ToArray(), 10000); // 633
+    //ActivityNotifications.Execute2(Resource.expenditures2.Split(' ').Select(v => Convert.ToInt32(v.Trim())).ToArray(), 30000); // 492 <- 
+    // <- for this one I'm getting wrong answer, but I'm pretty sure my algorithm is correct
+    // besides there are some solutions graded 100% on HR that are not calculating correct answers...
     public static class ActivityNotifications {
         public static int Execute2(int[] expenditures, int d) {
             var notificationsCount = 0;
@@ -59,21 +67,20 @@ namespace AmazonInterview.Tasks {
             if (list == null || list.Count == 0)
                 return -1;
 
-            var left = 0;
-            var right = list.Count - 1;
+            var low = 0;
+            var high = list.Count;
 
-            while (left <= right) {
-                var middle = left + (right - left) / 2;
+            while (low != high) {
+                var mid = (low + high) / 2;
 
-                if (list[middle] > target)
-                    right = middle - 1;
-                else if (list[middle] < target)
-                    left = middle + 1;
-                else
-                    return middle;
+                if (list[mid] <= target) {
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
             }
 
-            return -1;
+            return low;
         }
     }
 }

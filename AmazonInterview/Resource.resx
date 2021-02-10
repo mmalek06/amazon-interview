@@ -121,4 +121,7 @@
   <data name="expenditures" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\expenditures.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
   </data>
+  <data name="expenditures2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\expenditures2.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1250</value>
+  </data>
 </root>

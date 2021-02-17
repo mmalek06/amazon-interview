@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace AmazonInterview.Utils {
     public static class Arrays {
-        public static int[] FlattenArray(int[][] s) {
+        public static int[] FlattenArray(this int[][] s) {
             var flat = new int[s.Length * s[0].Length];
             var idx = 0;
 
@@ -17,39 +17,7 @@ namespace AmazonInterview.Utils {
             return flat;
         }
 
-        public static IReadOnlyList<IReadOnlyList<int>> SlowPermutations(int[] numbers) {
-            var roots = new List<NaryNode<int>>();
-
-            for (var startNumber = 1; startNumber < 10; startNumber++) {
-                var root = new NaryNode<int>(startNumber);
-
-                for (var index = 1; index < 9; index++) {
-                    var permutationsSoFar = root.InOrder();
-
-                    for (var i = 0; i < permutationsSoFar.Count; i++) {
-                        var forbiddenNumbers = permutationsSoFar[i][permutationsSoFar[i].Count - 1].ToRootValuesOnly();
-
-                        for (var @try = 0; @try < 9 - index; @try++) {
-                            var number = GetNumber(forbiddenNumbers);
-
-                            permutationsSoFar[i].Last().Add(number);
-                            forbiddenNumbers.Add(number);
-                        }
-                    }
-                }
-
-                roots.Add(root);
-            }
-
-            var result = roots.SelectMany(r => r.InOrderValuesOnly()).ToList();
-
-            return result;
-
-            int GetNumber(IEnumerable<int> excluded) =>
-                numbers.FirstOrDefault(n => !excluded.Contains(n));
-        }
-
-        public static void HeapPermutations<T>(T[] a, int n, List<IEnumerable<T>> result) {
+        public static void HeapPermutations<T>(this T[] a, int n, List<IEnumerable<T>> result) {
             if (n == 1)
                 result.Add(a.ToList());
 

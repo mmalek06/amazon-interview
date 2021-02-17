@@ -30,7 +30,7 @@ namespace AmazonInterview.Tasks {
 
                     sliceIndexToRemove = indexes[0];
                 } else {
-                    var insertionIndex = FindFirstHigherValue(slice, expenditures[i - 1]);
+                    var insertionIndex = slice.FindFirstHigherValueIndex(expenditures[i - 1]);
 
                     if (insertionIndex < 0)
                         slice.Add(expenditures[i - 1]);
@@ -61,26 +61,6 @@ namespace AmazonInterview.Tasks {
             }
 
             return values[values.Count / 2];
-        }
-
-        private static int FindFirstHigherValue(List<int> list, int target) {
-            if (list == null || list.Count == 0)
-                return -1;
-
-            var low = 0;
-            var high = list.Count;
-
-            while (low != high) {
-                var mid = (low + high) / 2;
-
-                if (list[mid] <= target) {
-                    low = mid + 1;
-                } else {
-                    high = mid;
-                }
-            }
-
-            return low;
         }
     }
 }

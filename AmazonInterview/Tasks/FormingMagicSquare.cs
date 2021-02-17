@@ -6,7 +6,6 @@ using System.Linq;
 namespace AmazonInterview.Tasks {
     // https://www.hackerrank.com/challenges/magic-square-forming/problem
     // var alg = new FormingAMagicSquare();
-
     // alg.FormingMagicSquare(new int[3][] {
     //            new int[]{ 5, 3, 4 },
     //            new int[] { 1, 5, 8 },
@@ -20,10 +19,10 @@ namespace AmazonInterview.Tasks {
             if (s.Length < 2)
                 return 0;
 
-            var flatInput = Arrays.FlattenArray(s);
+            var flatInput = s.FlattenArray();
             var permutations = new List<IEnumerable<int>>();
             
-            Arrays.HeapPermutations(Numbers, Numbers.Length, permutations);
+            Numbers.HeapPermutations(Numbers.Length, permutations);
 
             var validSquares = GetValidSquares(permutations);
             var minCost = MinimazeTransformationCost(flatInput, validSquares);

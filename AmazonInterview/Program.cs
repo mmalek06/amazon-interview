@@ -1,6 +1,4 @@
 ﻿using AmazonInterview.Tasks;
-using System;
-using System.Linq;
 
 namespace AmazonInterview {
     class Program {

@@ -1,6 +1,4 @@
-﻿using AmazonInterview.Tasks;
-
-namespace AmazonInterview {
+﻿namespace AmazonInterview {
     class Program {
         static void Main(string[] args) {
 

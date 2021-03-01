@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AmazonInterview.Utils {
     public static class Combinations {
-        public static IEnumerable<T[]> CombinationsRosetta<T>(T[] array, int m) {
+        public static IEnumerable<T[]> CombinationsRosetta<T>(this T[] array, int m) {
             if (array.Length < m)
                 throw new ArgumentException("Array length can't be less than number of selected elements");
             if (m < 1)

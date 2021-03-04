@@ -79,6 +79,44 @@ namespace AmazonInterview {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 402159386 855281517 951
+        ///78784642 628778006 814819524
+        ///257121863 512690385 568531630
+        ///191483712 133998276 219876078
+        ///24946722 394491791 807847150
+        ///143326758 516353864 567487888
+        ///304114857 559108942 565423924
+        ///24228588 833146215 849130550
+        ///357531390 806210643 816693281
+        ///334477 156186458 287472520
+        ///265206289 261342096 636632143
+        ///225381174 6069913 377107860
+        ///9905238 250163927 572148214
+        ///262788819 343477965 418368162
+        ///20042752 250950342 848414359
+        ///157351215 199949059 526416674
+        ///38915168 674461015 789937002
+        ///857 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string gridland1 {
+            get {
+                return ResourceManager.GetString("gridland1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2 9 3
+        ///2 1 5
+        ///2 2 4
+        ///2 8 8.
+        /// </summary>
+        internal static string gridland2 {
+            get {
+                return ResourceManager.GetString("gridland2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1
         ///2
         ///1

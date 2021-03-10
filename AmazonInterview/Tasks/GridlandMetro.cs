@@ -10,7 +10,8 @@ namespace AmazonInterview.Tasks {
     //    new[] {5, 0, 4 },
     //    new[] {1, 0, 3 },
     //    new[] {2, 3, 4 }
-    //}); // 12 wolnych
+    // }); // 12 wolnych
+    // another special case handling should be added for both "next" numbers lower that what's in the cachedTrack
     public class GridlandMetro {
         public static BigInteger gridlandMetro(int n, int m, int k, int[][] track) {
             var totalSquares = new BigInteger(n) * new BigInteger(m);

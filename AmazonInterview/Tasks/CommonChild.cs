@@ -9,74 +9,54 @@ namespace AmazonInterview.Tasks {
                 return s1.Length;
 
             var tuples = BuildLetterMaps(s1, s2);
-            var s1map = tuples.Item1;
-            var expanded1 = tuples.Item2;
-            var s2map = tuples.Item3;
-            var expanded2 = tuples.Item4;
-            var max1 = FindMax(expanded1, s2map);
-            var max2 = FindMax(expanded2, s1map);
+            var expanded1 = tuples.Item1;
+            var s2map = tuples.Item2;
+            var maxString = FindMax(expanded1, s2map);
 
-            return Math.Max(max1, max2);
+            return maxString.Length;
         }
 
-        private static int FindMax(char[] input, Dictionary<char, List<int>> map) {
-            var max = 0;
+        private static string FindMax(char[] input, Dictionary<char, List<int>> map, int lowerLimit = 0, int mapLimit = -1) {
+            var max = "";
 
-            for (var i = 0; i < input.Length; i++) {
-                var prevLimit = -1;
-                var currentMax = 0;
+            for (var i = lowerLimit; i < input.Length; i++) {
+                var letter = input[i];
+                var index = map[letter].FindIndex(p => p > mapLimit);
 
-                for (var j = i; j < input.Length; j++) {
-                    var letter = input[j];
-                    var index = map[letter].FindIndex(p => p > prevLimit);
+                if (index == -1)
+                    continue;
 
-                    if (index == -1)
-                        continue;
+                var characters = input[i] + FindMax(input, map, i + 1, map[letter][index]);
 
-                    prevLimit = map[letter][index];
-                    currentMax++;
-                }
-
-                if (currentMax > max)
-                    max = currentMax;
+                if (characters.Length > max.Length)
+                    max = characters;
             }
 
             return max;
         }
 
-        private static Tuple<Dictionary<char, List<int>>, char[], Dictionary<char, List<int>>, char[]> BuildLetterMaps(string s1, string s2) {
+        private static Tuple<char[], Dictionary<char, List<int>>> BuildLetterMaps(string s1, string s2) {
             var h1 = new HashSet<char>(s1);
             var h2 = new HashSet<char>(s2);
-            var dict1 = new Dictionary<char, List<int>>();
             var expanded1 = new char[s1.Length];
             var dict2 = new Dictionary<char, List<int>>();
             var expanded2 = new char[s1.Length];
 
             for (var i = 0; i < s1.Length; i++) {
-                if (h2.Contains(s1[i])) {
-                    if (!dict1.ContainsKey(s1[i]))
-                        dict1[s1[i]] = new List<int> { i };
-                    else
-                        dict1[s1[i]].Add(i);
-
+                if (h2.Contains(s1[i]))
                     expanded1[i] = s1[i];
-                }
 
                 if (h1.Contains(s2[i])) {
                     if (!dict2.ContainsKey(s2[i]))
                         dict2[s2[i]] = new List<int> { i };
                     else
                         dict2[s2[i]].Add(i);
-
-                    expanded2[i] = s2[i];
                 }
             }
 
             return Tuple.Create(
-                dict1, 
                 expanded1.Where(x => x != default(char)).ToArray(),
-                dict2, 
-                expanded2.Where(x => x != default(char)).ToArray());
+                dict2);
         }
     }
 }

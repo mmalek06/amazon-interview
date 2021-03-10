@@ -5,6 +5,7 @@ namespace AmazonInterview {
         static void Main(string[] args) {
             CommonChild.commonChild("SHINCHAN", "NOHARAAA");
             CommonChild.commonChild("ABCDEF", "FBDAMN");
+            CommonChild.commonChild("faadkuru", "fdaakuru");
             CommonChild.commonChild("WEWOUCUIDGCGTRMEZEPXZFEJWISRSBBSYXAYDFEJJDLEBVHHKS", "FDAGCXGKCTKWNECHMRXZWMLRYUCOCZHJRRJBOAJOQJZZVUYXIC");
             //CommonChild.commonChild("ARKANA", "KARAKN");
             //CommonChild.commonChild("KXSK", "SXKX");

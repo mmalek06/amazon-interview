@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     // https://www.hackerrank.com/challenges/richie-rich/problem
     public static class HighestValuePalindrome {
         public static string Execute(string s, int n, int changesAllowed) {

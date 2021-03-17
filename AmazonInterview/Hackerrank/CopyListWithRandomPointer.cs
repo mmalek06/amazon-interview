@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     public class Node {
         public int val;
         public Node next;

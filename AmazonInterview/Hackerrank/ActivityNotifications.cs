@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     //https://www.hackerrank.com/challenges/fraudulent-activity-notifications/problem
     //ActivityNotifications.Execute2(new[] { 2, 3, 4, 2, 3, 6, 8, 4, 5 }, 5); // 2 
     //ActivityNotifications.Execute2(new[] { 1, 2, 3, 4, 4 }, 4); // 0
@@ -16,7 +16,7 @@ namespace AmazonInterview.Tasks {
         public static int Execute2(int[] expenditures, int d) {
             var notificationsCount = 0;
             var slice = new List<int>(d);
-            
+
             for (var i = d; i < expenditures.Length; i++) {
                 int sliceIndexToRemove;
 
@@ -36,7 +36,7 @@ namespace AmazonInterview.Tasks {
                         slice.Add(expenditures[i - 1]);
                     else
                         slice.Insert(insertionIndex, expenditures[i - 1]);
-                    
+
                     sliceIndexToRemove = slice.BinarySearch(expenditures[i - d]);
                 }
 

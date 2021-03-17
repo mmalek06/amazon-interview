@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     // https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
     // var result1 = ClimbingTheLeaderboard.ClimbingLeaderboard(
     // new List<int> { 100, 90, 90, 80, 75, 60 },

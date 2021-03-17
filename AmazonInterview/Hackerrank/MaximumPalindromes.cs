@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview.Tasks {
-    // it almost works, but mostly it doesn't...
+namespace AmazonInterview.Hackerrank {
+    //there are some edge cases where it doesn't work. will get back to it when I have more time.
     //var a = Resource.maximumpalindromes_test3.Split(Environment.NewLine).Select(x => x.Split(" ").Select(int.Parse).ToArray()).ToArray();
     //var b = Resource.maximumpalindromes_ans3.Split(Environment.NewLine).Select(int.Parse).ToArray();
 
@@ -60,8 +60,6 @@ namespace AmazonInterview.Tasks {
             return repetitions;
         }
 
-        // zebrać wszystkie parzyste powtórzenia
-        // do nich dobierać zmniejszone o 1 i > 0 nieparzyste powtórzenia zostawiając zawsze jedno nieparzyste nienaruszone
         private static IEnumerable<Dictionary<char, int>> GetPalindromicCombinations(Dictionary<char, int> repetitions) {
             var evenRepetitions = new Dictionary<char, int>();
             var unevenRepetitions = new Dictionary<char, int>();

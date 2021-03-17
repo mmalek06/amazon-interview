@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Numerics;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     // https://www.hackerrank.com/challenges/gridland-metro/problem
     // GridlandMetro.gridlandMetro(5, 5, 0, new int[][] {
     //    new[] {1, 0, 1 },

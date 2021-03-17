@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     public static class NonDivisibleSubset {
         // similar in spirit to: https://cs.stackexchange.com/a/57876
         // NonDivisibleSubset.ExecuteFast(3, new List<int> { 1, 7, 2, 4 });

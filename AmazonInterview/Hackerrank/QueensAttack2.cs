@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     public static class QueensAttack2 {
         // https://www.hackerrank.com/challenges/queens-attack-2/problem
         // QueensAttack2.Execute(4, 0, 4, 4, new int[0][]);

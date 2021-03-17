@@ -1,4 +1,4 @@
-﻿namespace AmazonInterview.Tasks {
+﻿namespace AmazonInterview.Hackerrank {
     public class BreakAPalindrome {
         public string Execute(string palindrome) {
             if (string.IsNullOrEmpty(palindrome) || palindrome.Length == 1)

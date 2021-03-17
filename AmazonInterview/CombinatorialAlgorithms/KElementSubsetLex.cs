@@ -18,7 +18,7 @@ namespace AmazonInterview.CombinatorialAlgorithms {
             if (i == 0)
                 return null;
 
-            // adjust: numbers to small will be increased, numbers to big will be decreased
+            // adjust: numbers too small will be increased, numbers too big will be decreased
             for (var j = i; j < k; j++)
                 U[j] = T[i] + 1 + j - i;
 

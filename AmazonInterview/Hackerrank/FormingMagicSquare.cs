@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     // https://www.hackerrank.com/challenges/magic-square-forming/problem
     // var alg = new FormingAMagicSquare();
     // alg.FormingMagicSquare(new int[3][] {

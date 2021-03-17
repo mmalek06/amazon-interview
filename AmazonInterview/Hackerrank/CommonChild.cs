@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AmazonInterview.Tasks {
+namespace AmazonInterview.Hackerrank {
     // CommonChild.commonChild("WEWOUCUIDGCGTRMEZEPXZFEJWISRSBBSYXAYDFEJJDLEBVHHKS", "FDAGCXGKCTKWNECHMRXZWMLRYUCOCZHJRRJBOAJOQJZZVUYXIC");
     // https://www.hackerrank.com/challenges/common-child/problem
     public class CommonChild {

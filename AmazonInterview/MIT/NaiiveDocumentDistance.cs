@@ -5,6 +5,15 @@ using System.Text;
 
 namespace AmazonInterview.MIT {
     public static class NaiiveDocumentDistance {
+        /// <summary>
+        /// NaiiveDocumentDistance.Go(
+        ///     "searching for love",
+        ///     new[] {
+        ///         "love is not here but it's there, go search for it",
+        ///         "love is here and love is there and love is also elsewhere",
+        ///         "2love is here and love is there and love is also somewhere, go search for it",
+        ///     });
+        /// </summary>
         public static (double, string) Go(string query, IReadOnlyList<string> docs) {
             var cleanedQuery = GetOccurrences(GetWords(query));
             var cleanedDocs = docs.Select(x => GetOccurrences(GetWords(x)));
@@ -30,7 +39,7 @@ namespace AmazonInterview.MIT {
 
             for (var i = 0; i < input.Length; i++) {
                 if (!char.IsLetterOrDigit(input[i]) && currentWord.Length > 0) {
-                    words.Add(currentWord.ToString());
+                    words.Add(currentWord.ToString().ToLower());
                     currentWord.Clear();
 
                     continue;
@@ -40,7 +49,7 @@ namespace AmazonInterview.MIT {
             }
 
             if (currentWord.Length > 0)
-                words.Add(currentWord.ToString());
+                words.Add(currentWord.ToString().ToLower());
 
             return words;
         }

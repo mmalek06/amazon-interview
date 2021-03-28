@@ -1,6 +1,4 @@
-﻿using AmazonInterview.MIT;
-
-namespace AmazonInterview {
+﻿namespace AmazonInterview {
     class Program {
         static void Main(string[] args) {
 
